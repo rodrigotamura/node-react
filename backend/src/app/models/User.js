@@ -7,6 +7,7 @@ class User extends Model {
         name: Sequelize.STRING,
         cpf: Sequelize.INTEGER,
         mobile: Sequelize.STRING,
+        account_number: Sequelize.STRING,
       },
       {
         sequelize,
