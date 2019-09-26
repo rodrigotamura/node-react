@@ -73,7 +73,7 @@ class FavoredsController {
 
     const { favored_id } = req.params;
 
-    await Favored.destroyOr({
+    await Favored.destroy({
       where: { user_id: req.userId, user_id_favored: favored_id },
     });
 
@@ -141,7 +141,7 @@ class FavoredsController {
     }
 
     // updating
-    const favored = await User.update(
+    await User.update(
       {
         name,
         cpf,

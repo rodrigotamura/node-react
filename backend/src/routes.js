@@ -2,6 +2,7 @@ import { Router } from 'express';
 
 import initialMiddleware from './app/middlewares/initial';
 import authMiddleware from './app/middlewares/auth';
+import balanceMiddleware from './app/middlewares/balance';
 
 import SessionController from './app/controllers/SessionController';
 import FavoredsController from './app/controllers/FavoredsController';
@@ -20,5 +21,7 @@ routes.delete('/favoreds/:favored_id', FavoredsController.remove);
 routes.get('/favoreds/:favored_id', FavoredsController.show);
 
 routes.get('/transactions', TransactionsController.index);
+routes.use(balanceMiddleware);
+routes.post('/transactions', TransactionsController.store);
 
 export default routes;

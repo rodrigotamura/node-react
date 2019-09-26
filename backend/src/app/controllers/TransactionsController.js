@@ -1,5 +1,6 @@
 import { Op } from 'sequelize';
 import * as Yup from 'yup';
+import { parseISO, subMinutes, compareAsc } from 'date-fns'; // let's only import this feature
 import Favored from '../models/Favored';
 import User from '../models/User';
 import Transaction from '../models/Transaction';
@@ -46,134 +47,60 @@ class TransactionsController {
    */
   async store(req, res) {
     const schema = Yup.object().shape({
-      name: Yup.string().required(),
-      cpf: Yup.number()
-        .min(10000000000)
-        .max(99999999999),
-      mobile: Yup.string().required(),
+      user_id_destiny: Yup.number().required(),
+      value: Yup.number().required(),
     });
 
     if (!(await schema.isValid(req.body))) {
-      return res.status(400).json({ error: 'Dados inválidos.' });
+      return res
+        .status(400)
+        .json({ error: 'Dados inválidos para a transação.' });
     }
 
-    const { name, cpf, mobile } = req.body;
+    const { user_id_destiny, value } = req.body;
 
-    // generating a number account
-    const account_number = Math.floor(Math.random() * 100000);
-
-    // creating new user
-    const [favored] = await User.findOrCreate({
-      where: { cpf },
-      defaults: { name, mobile, account_number },
+    // verifying wether user destination is a favored
+    const checkFavored = await Favored.findOne({
+      where: { user_id: req.userId, user_id_favored: user_id_destiny },
     });
-
-    // making this user as favored
-    await Favored.findOrCreate({
-      where: { user_id: req.userId, user_id_favored: favored.id },
-    });
-
-    return res.json(favored);
-  }
-
-  /**
-   * Unmaking favored
-   */
-  async remove(req, res) {
-    const schema = Yup.object().shape({
-      favored_id: Yup.number().required(),
-    });
-
-    if (!(await schema.isValid(req.params))) {
-      return res.status(400).json({
-        error: 'Favor informar o ID do usuário favorecido a descadastrar',
-      });
+    if (!checkFavored) {
+      return res.status(400).json({ error: 'Favorecido inválido.' });
     }
 
-    const { favored_id } = req.params;
-
-    await Favored.destroyOr({
-      where: { user_id: req.userId, user_id_favored: favored_id },
-    });
-
-    return res.json();
-  }
-
-  /**
-   * Getting Favored info
-   */
-  async show(req, res) {
-    const schema = Yup.object().shape({
-      favored_id: Yup.number().required(),
-    });
-
-    if (!(await schema.isValid(req.params))) {
-      return res.status(400).json({
-        error: 'Favor informar o ID do usuário favorecido a visualizar',
-      });
+    // Verify if transaction value is greater than current balance
+    if (value > req.balance) {
+      return res.status(400).json({ error: 'Saldo insuficiente.' });
     }
 
-    const { favored_id } = req.params;
-
-    // getting favored info
-    const favored = await User.findByPk(favored_id);
-
-    if (!favored) {
-      return res.status(400).json({
-        error: 'Este favorecido não existe',
-      });
-    }
-
-    return res.json(favored);
-  }
-
-  /**
-   * Updating favored infos
-   */
-  async update(req, res) {
-    // validating
-    const schema = Yup.object().shape({
-      id: Yup.number().required(),
-      name: Yup.string().required(),
-      cpf: Yup.number()
-        .min(10000000000)
-        .max(99999999999),
-      mobile: Yup.string().required(),
+    // Transaction less than 2 minutes, consider latest
+    const latestTransaction = await Transaction.findOne({
+      raw: true,
+      where: { user_id_origin: req.userId, user_id_destiny },
+      order: [['created_at', 'DESC']],
+      attributes: ['id', 'created_at'],
     });
-
-    if (!(await schema.isValid(req.body))) {
-      return res.status(400).json({
-        error: 'Dados inválidos',
-      });
-    }
-
-    const { id, name, cpf, mobile } = req.body;
-
-    // verify if given cpf is already taken
-    const checkCpf = await User.findOne({
-      where: { cpf, id: { [Op.not]: id } },
-    });
-    if (checkCpf) {
-      return res.status(400).json({
-        error: 'Favor informar outro CPF. CPF em uso!',
-      });
-    }
-
-    // updating
-    const favored = await User.update(
-      {
-        name,
-        cpf,
-        mobile,
-      },
-      {
-        where: {
-          id,
-        },
-      }
+    const check2Minutes = compareAsc(
+      subMinutes(new Date(), 2),
+      latestTransaction.created_at
     );
+    if (check2Minutes === -1) {
+      await Transaction.destroy({
+        where: {
+          id: latestTransaction.id,
+        },
+      });
+    }
 
-    return res.json();
+    // completing transaction
+    const transaction = await Transaction.create({
+      user_id_origin: req.userId,
+      user_id_destiny,
+      value,
+    });
+
+    const balance = req.balance - value;
+
+    return res.json({ transaction, balance });
   }
 }
 
