@@ -10,7 +10,7 @@ export default function RouteWrapper({
   isPrivate = false,
   ...rest
 }) {
-  const signed = true;
+  const signed = false;
 
   // nao logado mas rota protegida
   if (!signed && isPrivate) {

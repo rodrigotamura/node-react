@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import { IoMdContrast } from 'react-icons/io';
-import { MdTextFields, MdInfo } from 'react-icons/md';
+import { MdTextFields } from 'react-icons/md';
 
 import { NavMobile, Accessibility, Profile } from './styles';
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { MdArrowBack, MdDelete, MdDone } from 'react-icons/md';
+import { MdArrowBack, MdDone } from 'react-icons/md';
 import { Form, Input, Select } from '@rocketseat/unform';
 import iconHeader from '~/assets/vaadin-money-exchange.svg';
 
@@ -16,7 +16,7 @@ export default function Transferings() {
   return (
     <Container>
       <h1>
-        <img src={iconHeader} />
+        <img src={iconHeader} alt="Nova transferência" />
         <span>Nova transferência</span>
       </h1>
 

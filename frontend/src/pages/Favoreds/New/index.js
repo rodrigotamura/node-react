@@ -1,5 +1,5 @@
 import React from 'react';
-import { MdPeople, MdArrowBack, MdDelete, MdDone } from 'react-icons/md';
+import { MdPeople, MdArrowBack, MdDone } from 'react-icons/md';
 import { Form, Input } from '@rocketseat/unform';
 
 import { Container } from './styles';

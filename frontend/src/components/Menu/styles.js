@@ -29,6 +29,10 @@ export const Navbar = styled.ul`
   a {
     color: #fff;
     font-size: 19px;
+    padding: 4px 10px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
     @media ${mediaQueries.tablet} {
       a {
         color: #fff;
