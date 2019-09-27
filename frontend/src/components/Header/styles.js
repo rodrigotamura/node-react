@@ -1,8 +1,10 @@
 import styled from 'styled-components';
+import { mediaQueries } from '~/styles/mediaQueries';
 
 export const Container = styled.div`
   background: #513026;
   width: 100%;
+  min-width: 425px;
   height: 92px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   display: flex;
@@ -13,6 +15,10 @@ export const Container = styled.div`
 export const Content = styled.div`
   width: 100%;
   max-width: 1440px;
+
+  @media ${mediaQueries.mobile} {
+    max-width: none;
+  }
 
   nav {
     display: flex;
@@ -83,6 +89,17 @@ export const Content = styled.div`
           background: #fff;
           color: #333;
         }
+      }
+    }
+
+    @media ${mediaQueries.mobile} {
+      justify-content: center;
+
+      img {
+        margin: 0 auto;
+      }
+      div {
+        display: none;
       }
     }
   }

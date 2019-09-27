@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import { mediaQueries } from './mediaQueries';
 
 export default createGlobalStyle`
   @import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap');
@@ -90,6 +91,24 @@ export default createGlobalStyle`
     tbody {
       tr:hover {
         background: rgba(255, 255, 255, 0.2);
+      }
+    }
+
+    @media ${mediaQueries.mobile} {
+
+      thead {
+        th {
+          border-bottom: #333 1px solid;
+          font-weight: normal;
+          text-align:left;
+          font-size: 13px;
+        }
+      }
+
+      tbody {
+        td {
+          font-size: 13px;
+        }
       }
     }
   }

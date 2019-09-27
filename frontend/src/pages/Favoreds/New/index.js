@@ -9,7 +9,7 @@ export default function FavoredNew() {
     <Container>
       <h1>
         <MdPeople />
-        <span>Favorecidos</span>
+        <span>Favorecidos - Cadastro</span>
       </h1>
 
       <Form>

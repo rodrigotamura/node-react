@@ -9,15 +9,15 @@ export default function Menu() {
   return (
     <Container>
       <Navbar>
-        <li>
-          <Link to="/">Minhas movimentações</Link>
-        </li>
-        <li>
-          <Link to="/favoreds">Favorecidos</Link>
-        </li>
-        <li>
-          <Link to="/transferings">Nova transferência</Link>
-        </li>
+        <Link to="/">
+          <li>Minhas movimentações</li>
+        </Link>
+        <Link to="/favoreds">
+          <li>Favorecidos</li>
+        </Link>
+        <Link to="/transferings">
+          <li>Nova transferência</li>
+        </Link>
       </Navbar>
       <Accessibility>
         <IoMdContrast color="#fff" size={35} title="Alterar contraste" />

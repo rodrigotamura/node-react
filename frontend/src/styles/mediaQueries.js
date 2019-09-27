@@ -1,5 +1,5 @@
 export const mediaQueries = {
-  mobile: '(max-width: 425px)',
-  tablet: '(min-width: 768px)',
-  desktop: '(min-width: 1440px)',
+  mobile: '(min-width: 100px) and (max-width: 695px)',
+  tablet: '(min-width: 695px) and (max-width: 768px)',
+  desktop: '(max-width: 1440px)',
 };

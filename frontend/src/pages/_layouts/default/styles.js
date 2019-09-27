@@ -8,6 +8,7 @@ export const Wrapper = styled.div`
   border-radius: 4px;
   width: 100%;
   max-width: 1440px;
+  min-width: 410px;
   margin: 0 auto;
   padding: 60px;
   color: #503026;
@@ -15,5 +16,10 @@ export const Wrapper = styled.div`
   @media ${mediaQueries.tablet} {
     width: 95%;
     padding: 30px;
+  }
+
+  @media ${mediaQueries.mobile} {
+    width: 95%;
+    padding: 15px;
   }
 `;

@@ -24,7 +24,12 @@ export default function Transferings() {
         <div className="line1">
           <span className="input-group">
             <label htmlFor="name">Favorecido(a):</label>
-            <Select name="name" id="name" options={options} />
+            <Select
+              name="name"
+              placeholder="Selecione"
+              id="name"
+              options={options}
+            />
           </span>
           <span className="account">Conta: 123123123</span>
         </div>

@@ -184,4 +184,86 @@ export const Container = styled.div`
       }
     }
   }
+
+  @media ${mediaQueries.mobile} {
+    h1 {
+      font-size: 20px;
+    }
+
+    span.account {
+      padding: 15px !important;
+    }
+
+    form {
+      div.line1,
+      .line2 {
+        display: flex;
+        flex-direction: column-reverse !important;
+        margin-bottom: 0px;
+      }
+
+
+      span.input-group {
+        font-size: 15px;
+        background: rgba(255, 255, 255, 0.2);
+        margin: 15px auto !important;
+
+        label {
+          padding: 0px;
+          min-width: 100px;
+          padding: 17px 0;
+        }
+
+        select {
+          height: 100%;
+          margin: 0px;
+          min-width: 280px;
+        }
+
+        span {
+          min-width: 280px;
+          text-align: center;
+        }
+      }
+
+      div.line3 {
+        flex-direction: column;
+        span.input-group {
+          label {
+            white-space: normal;
+            min-width: 80px;
+            text-align: center;
+          }
+
+          span {
+            min-width: 50px;
+            padding: 0 20px;
+            font-size: 18px;
+          }
+
+          input {
+            font-size: 25px;
+            width: 240px;
+            font-weight: bold;
+
+            @media ${mediaQueries.tablet} {
+              width: 240px;
+            }
+          }
+        }
+
+        button.btn-confirm {
+            margin: 0px;
+
+            svg {
+              margin-right: 15px;
+            }
+
+            &:hover {
+              background: ${darken(0.1, '#229169')};
+            }
+        }
+      }
+    }
+  }
 `;
