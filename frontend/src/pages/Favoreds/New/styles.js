@@ -1,0 +1,123 @@
+import styled from 'styled-components';
+import { darken } from 'polished';
+
+export const Container = styled.div`
+  h1 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 25px;
+
+    svg {
+      margin-right: 15px;
+    }
+  }
+
+  form {
+    span.input-group {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      flex-wrap: nowrap;
+      font-size: 18px;
+      background: rgba(255, 255, 255, 0.2);
+
+      label {
+        min-width: 175px;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(81, 48, 38, 0.7);
+        padding: 0 50px;
+        border-radius: 4px;
+        color: #fff;
+        font-weight: bold;
+      }
+
+      input {
+        height: 100%;
+        margin: 0px;
+      }
+    }
+
+    div.line1,
+    .line2 {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      margin-bottom: 30px;
+    }
+
+    div.line1 {
+      span.input-group {
+        flex-grow: 1;
+        input {
+          width: 100%;
+        }
+      }
+
+      span.account {
+        white-space: nowrap;
+        background: rgba(255, 255, 255, 0.52);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-grow: 0.2;
+        font-size: 18px;
+        font-weight: bold;
+      }
+    }
+
+    div.line2 {
+      span.input-group {
+        flex-grow: 1;
+        input {
+          width: 100%;
+        }
+      }
+
+      span.input-group:last-child {
+        margin-left: 30px;
+      }
+    }
+
+    div.buttons {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+
+      button {
+        height: 46px;
+        white-space: nowrap;
+      }
+
+      button.btn-back {
+        max-width: 186px;
+        background: #777;
+        color: #fff;
+
+        &:hover {
+          background: ${darken(0.1, '#777')};
+        }
+      }
+
+      div {
+        display: flex;
+        flex-direction: row;
+
+        button.btn-confirm {
+          background: #229169;
+          margin: 0 20px;
+          color: #fff;
+          width: 250px;
+
+          &:hover {
+            background: ${darken(0.1, '#229169')};
+          }
+        }
+      }
+    }
+  }
+`;

@@ -1,7 +1,14 @@
 import React from 'react';
 
-// import { Container } from './styles';
+import { Wrapper } from './styles';
 
-export default function authLayout() {
-  return <div />;
+import logo from '~/assets/logo_start.svg';
+
+export default function authLayout({ children }) {
+  return (
+    <Wrapper>
+      <img src={logo} alt="Welcome to Ekki" />
+      {children}
+    </Wrapper>
+  );
 }

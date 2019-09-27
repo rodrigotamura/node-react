@@ -10,8 +10,9 @@ export default function RouteWrapper({
   isPrivate = false,
   ...rest
 }) {
-  const { signed } = true;
+  const signed = true;
 
+  // nao logado mas rota protegida
   if (!signed && isPrivate) {
     return <Redirect to="/" />;
   }

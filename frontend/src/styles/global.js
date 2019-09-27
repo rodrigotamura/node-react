@@ -20,7 +20,7 @@ export default createGlobalStyle`
 
   body {
     -webkit-font-smoothing: antialiased;
-    background: linear-gradient(180deg, #22202c, #402845) fixed;
+    background: linear-gradient(180deg, #98181D, #C34449) fixed;
   }
 
   body, input, textarea, button {
@@ -28,14 +28,19 @@ export default createGlobalStyle`
     -internal-autofill-selected: none;
   }
 
-  input, textarea {
+  input, textarea, select {
     border: none;
-    background: rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.5);
     font-size: 18px;
     border-radius: 4px;
     padding: 15px;
     margin-bottom: 13px;
-    color: #fff;
+    color: #333;
+    width: 100%
+  }
+
+  input:disabled {
+    color: #777;
   }
 
   button {
@@ -47,6 +52,8 @@ export default createGlobalStyle`
     display: flex;
     align-items: center;
     justify-content: space-evenly;
+    font-size: 18px;
+    width: 100%
   }
 
 
@@ -60,5 +67,30 @@ export default createGlobalStyle`
 
   button {
     cursor: pointer;
+  }
+
+  table {
+    width: 100%;
+    font-size: 18px;
+
+    th, td {
+      padding: 14px;
+      font-size: 19px;
+    }
+
+    thead {
+      th {
+        border-bottom: #333 1px solid;
+        font-weight: normal;
+        text-align:left;
+        font-size: 16px;
+      }
+    }
+
+    tbody {
+      tr:hover {
+        background: rgba(255, 255, 255, 0.2);
+      }
+    }
   }
 `;
