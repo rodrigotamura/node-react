@@ -1,3 +1,3 @@
 import app from './app';
 
-let port = process.env.APP_PORT || 8080;
+const port = process.env.APP_PORT || 3000;
