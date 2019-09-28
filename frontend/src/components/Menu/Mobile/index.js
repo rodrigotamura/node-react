@@ -1,12 +1,21 @@
 import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import { IoMdContrast } from 'react-icons/io';
 import { MdTextFields } from 'react-icons/md';
+import { signOut } from '~/store/modules/auth/actions';
 
 import { NavMobile, Accessibility, Profile } from './styles';
 
 export default function MenuMobile() {
+  const profile = useSelector(state => state.user.profile);
+  const dispatch = useDispatch();
+
+  function handleSignOut() {
+    dispatch(signOut());
+  }
+
   return (
     <NavMobile>
       <div id="menuToggle">
@@ -26,12 +35,14 @@ export default function MenuMobile() {
           </li>
           <li>
             <Profile>
-              <strong>Rodrigo Tamura</strong>
+              <strong>{profile.name}</strong>
               <p>
-                CPF: 321.123.321-43 <br />
-                Cel.: 51 23443 2342
+                CPF: {profile.cpf} <br />
+                Cel.: {profile.mobile}
               </p>
-              <strong className="saldo">Saldo atual: R$ 1.000,00</strong>
+              <strong className="saldo">
+                Saldo atual: {profile.formatedBalance}
+              </strong>
             </Profile>
           </li>
           <li>
@@ -51,7 +62,9 @@ export default function MenuMobile() {
             </div>
           </li>
           <li>
-            <button type="button">Sair</button>
+            <button type="button" onClick={handleSignOut}>
+              Sair
+            </button>
           </li>
         </ul>
       </div>

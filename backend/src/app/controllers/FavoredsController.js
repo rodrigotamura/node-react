@@ -8,16 +8,18 @@ class FavoredsController {
    * getting all Favoreds accounts
    * */
   async index(req, res) {
-    const favoreds = await Favored.findAll({
+    const response = await Favored.findAll({
       where: { user_id: req.userId },
       include: [
         {
           model: User,
           as: 'favored',
-          attributes: ['name', 'mobile'],
+          attributes: ['id', 'name', 'mobile', 'cpf', 'account_number'],
         },
       ],
     });
+
+    const favoreds = response.map(f => f.favored);
 
     return res.json(favoreds);
   }
@@ -44,7 +46,7 @@ class FavoredsController {
     const account_number = Math.floor(Math.random() * 100000);
 
     // creating new user
-    const [favored] = await User.findOrCreate({
+    const [favored, created] = await User.findOrCreate({
       where: { cpf },
       defaults: { name, mobile, account_number },
     });
@@ -54,7 +56,7 @@ class FavoredsController {
       where: { user_id: req.userId, user_id_favored: favored.id },
     });
 
-    return res.json(favored);
+    return res.json({ favored, created });
   }
 
   /**

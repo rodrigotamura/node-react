@@ -114,4 +114,8 @@ export default createGlobalStyle`
       }
     }
   }
+
+  .Toastify__toast--success {
+    background: #31694b;
+  }
 `;

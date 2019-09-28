@@ -36,6 +36,15 @@ export const Container = styled.div`
         font-weight: bold;
       }
 
+      span {
+        width: 100%;
+        color: red;
+
+        span {
+          margin-left: 15px;
+        }
+      }
+
       input {
         height: 100%;
         margin: 0px;

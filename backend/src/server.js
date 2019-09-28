@@ -1,3 +1,3 @@
 import app from './app';
 
-app.listen(process.env.APP_PORT);
+let port = process.env.APP_PORT || 8080;

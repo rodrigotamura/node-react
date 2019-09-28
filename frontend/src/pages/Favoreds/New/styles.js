@@ -40,6 +40,14 @@ export const Container = styled.div`
         height: 100%;
         margin: 0px;
       }
+      span {
+        width: 100%;
+        color: red;
+
+        span {
+          margin-left: 15px;
+        }
+      }
     }
 
     div.line1,

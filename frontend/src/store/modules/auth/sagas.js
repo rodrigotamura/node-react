@@ -3,21 +3,19 @@ import { toast } from 'react-toastify';
 import api from '~/services/api';
 import { signInSuccess, signFailure } from './actions';
 import history from '~/services/history';
+import { formatPrice } from '~/utils/format';
 
 export function* signIn({ payload }) {
   try {
-    const { email, password } = payload;
+    const { cpf } = payload;
 
     const response = yield call(api.post, 'sessions', {
-      email,
-      password,
+      cpf,
     });
 
     const { token, user } = response.data;
 
-    if (!user.provider) {
-      toast.error('You are not service provider.');
-    }
+    user.formatedBalance = formatPrice(user.balance);
 
     // Including token in header requests
     api.defaults.headers.Authorization = `Bearer ${token}`;
@@ -26,7 +24,9 @@ export function* signIn({ payload }) {
 
     history.push('/dashboard');
   } catch (err) {
-    toast.error('Authentication failed. Check your correct credentials.');
+    toast.error(
+      'Falha na autenticação ou servidor indisponível. Tente o CPF 12345678910'
+    );
     yield put(signFailure());
   }
 }

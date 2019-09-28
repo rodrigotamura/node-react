@@ -16,7 +16,7 @@ export const Container = styled.div`
 
   form {
     span.input-group {
-      height: 46px;
+      min-height: 46px;
       display: flex;
       flex-direction: row;
       align-items: center;
@@ -49,10 +49,33 @@ export const Container = styled.div`
       }
 
       span {
-
         margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-content: flex-start;
+        text-align: center;
+        flex: 1;
 
+        select {
+          width: 100%;
+
+          & + span {
+            color: red;
+          }
+        }
+
+        input {
+          padding: 0px;
+          min-width: 190px;
+          max-width: 300px;
+
+          & + span {
+            color: red;
+          }
+        }
       }
+
+
     }
 
     div.line1,
@@ -111,8 +134,7 @@ export const Container = styled.div`
       span.input-group {
         label {
           background: #9d1d22;
-          white-space: nowrap;
-          min-width: 247px;
+          max-width: 247px;
 
           @media ${mediaQueries.tablet} {
             white-space: normal;
@@ -128,7 +150,6 @@ export const Container = styled.div`
           display: flex;
           align-items: center;
           justify-content: center;
-          padding: 0 20px;
           font-size: 18px;
         }
 
@@ -141,6 +162,11 @@ export const Container = styled.div`
             width: 240px;
           }
         }
+        input + span {
+            display: contents;
+            color: #FF0000;
+            font-size: 14px;
+          }
       }
 
       button.btn-confirm {
@@ -198,7 +224,7 @@ export const Container = styled.div`
       div.line1,
       .line2 {
         display: flex;
-        flex-direction: column-reverse !important;
+        flex-direction: column !important;
         margin-bottom: 0px;
       }
 
@@ -220,7 +246,7 @@ export const Container = styled.div`
           min-width: 280px;
         }
 
-        span {
+        span:not(.currency) {
           min-width: 280px;
           text-align: center;
         }
@@ -229,27 +255,48 @@ export const Container = styled.div`
       div.line3 {
         flex-direction: column;
         span.input-group {
+          height: 100%;
+
           label {
             white-space: normal;
-            min-width: 80px;
+            max-width: 80px;
             text-align: center;
           }
 
-          span {
-            min-width: 50px;
-            padding: 0 20px;
-            font-size: 18px;
+          span.currency {
+            max-width: 20px;
+            padding: 25px 15px;
+            height: 100%;
           }
 
-          input {
-            font-size: 25px;
-            width: 240px;
-            font-weight: bold;
+          span.amount {
+            min-width: 200px;
 
-            @media ${mediaQueries.tablet} {
-              width: 240px;
+            input {
+              width: 100%;
+              padding: 20px 0;
             }
           }
+
+          /* span:last-of-type {
+            min-width: 1px;
+            input {
+              font-size: 25px;
+              min-width: 200px;
+              font-weight: bold;
+              padding: 20px 0;
+
+            }
+          }
+
+          span:first-of-type {
+            min-width: 50px;
+            width: 20px;
+            padding: 24px;
+            font-size: 18px;
+          } */
+
+
         }
 
         button.btn-confirm {

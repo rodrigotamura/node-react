@@ -29,17 +29,42 @@ class TransactionsController {
           attributes: ['name', 'mobile'],
         },
       ],
+      order: [
+        ['created_at', 'DESC']
+      ]
     });
 
-    // negating outgoing values
-    const transactionsCorrectedAmount = transactions.map(transaction => {
+    let balance = 0;
+    const transactionsProcessed = transactions.map(transaction => {
+      let description = '';
+
       if (transaction.user_id_origin === req.userId) {
+        // balance
+        balance -= Number(transaction.value);
+
+        // negating outgoing values
         transaction.value *= -1;
+
+        // description
+        description += `Transferido para ${transaction.user_destiny.name}`;
+      } else {
+        // balance
+        balance += Number(transaction.value);
+
+        // description
+        description += `Recebido de ${transaction.user_origin.name} 🎁`;
       }
-      return transaction;
+
+      const transactionProcessed = {
+        ...transaction.dataValues,
+        description,
+        balance,
+      };
+
+      return transactionProcessed;
     });
 
-    return res.json(transactionsCorrectedAmount);
+    return res.json(transactionsProcessed);
   }
 
   /**
@@ -79,16 +104,19 @@ class TransactionsController {
       order: [['created_at', 'DESC']],
       attributes: ['id', 'created_at'],
     });
-    const check2Minutes = compareAsc(
-      subMinutes(new Date(), 2),
-      latestTransaction.created_at
-    );
-    if (check2Minutes === -1) {
-      await Transaction.destroy({
-        where: {
-          id: latestTransaction.id,
-        },
-      });
+
+    if (latestTransaction) {
+      const check2Minutes = compareAsc(
+        subMinutes(new Date(), 2),
+        latestTransaction.created_at
+      );
+      if (check2Minutes === -1) {
+        await Transaction.destroy({
+          where: {
+            id: latestTransaction.id,
+          },
+        });
+      }
     }
 
     // completing transaction
