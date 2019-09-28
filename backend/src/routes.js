@@ -9,6 +9,9 @@ import FavoredsController from './app/controllers/FavoredsController';
 import TransactionsController from './app/controllers/TransactionsController';
 
 const routes = new Router();
+routes.get('/', function(req, res) {
+  return res.json({ msg: 'ok' });
+});
 
 routes.use(initialMiddleware);
 routes.post('/sessions', SessionController.store);
