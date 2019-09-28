@@ -29,6 +29,8 @@
     "sequelize-cli": "^5.5.1"
   },
   "scripts": {
-    "start": "node ./src/server.js"
+    "dev": "node ./src/server.js",
+    "build": "sucrase ./src -d ./dist --transforms imports",
+    "start": "node dist/server.js"
   }
 }
