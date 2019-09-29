@@ -346,11 +346,11 @@ export const Container = styled.div`
         select {
           height: 100%;
           margin: 0px;
-          min-width: 280px;
+          min-width: 240px;
         }
 
         span:not(.currency) {
-          min-width: 280px;
+          min-width: 240px;
           text-align: center;
         }
       }
