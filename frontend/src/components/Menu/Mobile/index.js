@@ -1,12 +1,9 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-
-import { IoMdContrast } from 'react-icons/io';
-import { MdTextFields } from 'react-icons/md';
 import { signOut } from '~/store/modules/auth/actions';
 
-import { NavMobile, Accessibility, Profile } from './styles';
+import { NavMobile, Profile } from './styles';
 
 export default function MenuMobile() {
   const profile = useSelector(state => state.user.profile);
@@ -44,22 +41,6 @@ export default function MenuMobile() {
                 Saldo atual: {profile.formatedBalance}
               </strong>
             </Profile>
-          </li>
-          <li>
-            <div>
-              <Accessibility>
-                <IoMdContrast
-                  color="#503026"
-                  size={35}
-                  title="Alterar contraste"
-                />
-                <MdTextFields
-                  color="#503026"
-                  size={35}
-                  title="Tamanho da fonte"
-                />
-              </Accessibility>
-            </div>
           </li>
           <li>
             <button type="button" onClick={handleSignOut}>

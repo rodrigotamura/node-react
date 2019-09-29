@@ -1,9 +1,8 @@
 import styled from 'styled-components';
-import { mediaQueries } from '~/styles/mediaQueries';
 
 export const NavMobile = styled.nav`
   display: none;
-  @media ${mediaQueries.mobile} {
+  @media (min-width: 100px) and (max-width: 695px) {
     display: block;
     position: relative;
     top: -55px;

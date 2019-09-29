@@ -211,6 +211,109 @@ export const Container = styled.div`
     }
   }
 
+  @media ${mediaQueries.mobileSmall} {
+    h1 {
+      font-size: 20px;
+    }
+
+    span.account {
+      padding: 15px !important;
+    }
+
+    form {
+      div.line1,
+      .line2 {
+        display: flex;
+        flex-direction: column !important;
+        margin-bottom: 0px;
+      }
+
+
+      span.input-group {
+        font-size: 15px;
+        background: rgba(255, 255, 255, 0.2);
+        margin: 15px auto !important;
+
+        label {
+          padding: 0px;
+          min-width: 100px;
+          padding: 17px 0;
+        }
+
+        select {
+          height: 100%;
+          margin: 0px;
+          min-width: 240px;
+        }
+
+        span:not(.currency) {
+          min-width: 240px;
+          text-align: center;
+        }
+      }
+
+      div.line3 {
+        flex-direction: column;
+        span.input-group {
+          height: 100%;
+
+          label {
+            white-space: normal;
+            max-width: 80px;
+            text-align: center;
+          }
+
+          span.currency {
+            max-width: 20px;
+            padding: 25px 15px;
+            height: 100%;
+          }
+
+          span.amount {
+            min-width: 200px;
+
+            input {
+              width: 100%;
+              padding: 20px 0;
+            }
+          }
+
+          /* span:last-of-type {
+            min-width: 1px;
+            input {
+              font-size: 25px;
+              min-width: 200px;
+              font-weight: bold;
+              padding: 20px 0;
+
+            }
+          }
+
+          span:first-of-type {
+            min-width: 50px;
+            width: 20px;
+            padding: 24px;
+            font-size: 18px;
+          } */
+
+
+        }
+
+        button.btn-confirm {
+            margin: 0px;
+
+            svg {
+              margin-right: 15px;
+            }
+
+            &:hover {
+              background: ${darken(0.1, '#229169')};
+            }
+        }
+      }
+    }
+  }
+
   @media ${mediaQueries.mobile} {
     h1 {
       font-size: 20px;

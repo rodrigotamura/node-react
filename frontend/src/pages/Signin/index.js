@@ -3,9 +3,6 @@ import * as Yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
 import { Form, Input } from '@rocketseat/unform';
 
-import { IoMdContrast } from 'react-icons/io';
-import { MdTextFields } from 'react-icons/md';
-
 import { Container } from './styles';
 import { signInRequest } from '~/store/modules/auth/actions';
 
@@ -26,10 +23,6 @@ export default function Signin() {
       <Form onSubmit={handleSubmit} schema={schema}>
         <Input name="cpf" type="number" placeholder="Digite seu CPF" />
         <button type="submit">{loading ? 'Carregando...' : 'Entrar'}</button>
-        <div>
-          <IoMdContrast color="#fff" size={35} title="Alterar contraste" />
-          <MdTextFields color="#fff" size={35} title="Tamanho da fonte" />
-        </div>
       </Form>
     </Container>
   );

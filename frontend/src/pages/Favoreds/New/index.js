@@ -1,14 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { MdPeople, MdArrowBack, MdDone } from 'react-icons/md';
 import { Form, Input } from '@rocketseat/unform';
 import PropTypes from 'prop-types';
 import * as Yup from 'yup';
+import { FaSpinner } from 'react-icons/fa';
 
 import { toast } from 'react-toastify';
 import { Container } from './styles';
 import api from '~/services/api';
 
 export default function FavoredNew({ history }) {
+  const [loading, setLoading] = useState(false);
   const schema = Yup.object().shape({
     name: Yup.string().required('Nome obrigatório'),
     cpf: Yup.string().required('CPF obrigatório'),
@@ -16,6 +18,7 @@ export default function FavoredNew({ history }) {
   });
 
   async function handleSubmit(data) {
+    setLoading(true);
     try {
       const response = await api.post('favoreds', { ...data });
 
@@ -31,6 +34,7 @@ export default function FavoredNew({ history }) {
     } catch (err) {
       toast.error(`Ops, aconteceu algo: ${err.response.data.error}`);
     }
+    setLoading(false);
   }
   return (
     <Container>
@@ -74,9 +78,15 @@ export default function FavoredNew({ history }) {
             Voltar
           </button>
           <div>
-            <button type="submit" className="btn-confirm">
-              <MdDone />
-              Cadastrar favorecido
+            <button type="submit" className="btn-confirm" disabled={loading}>
+              {loading ? (
+                <FaSpinner color="#fff" size={14} />
+              ) : (
+                <>
+                  <MdDone />
+                  Cadastrar favorecido
+                </>
+              )}
             </button>
           </div>
         </div>

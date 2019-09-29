@@ -23,7 +23,8 @@ export default createGlobalStyle`
 
   body {
     -webkit-font-smoothing: antialiased;
-    background: linear-gradient(180deg, #98181D, #C34449) fixed;
+    background: linear-gradient(180deg, #98181D, #C34449);
+    background-attachment: fixed !important;
   }
 
   body, input, textarea, button {
@@ -39,7 +40,7 @@ export default createGlobalStyle`
     padding: 15px;
     margin-bottom: 13px;
     color: #333;
-    width: 100%
+    width: 100%;
   }
 
   input:disabled {
@@ -56,7 +57,7 @@ export default createGlobalStyle`
     align-items: center;
     justify-content: space-evenly;
     font-size: 18px;
-    width: 100%
+    width: 100%;
   }
 
 

@@ -30,8 +30,18 @@ export const Container = styled.div`
         background: ${darken(0.1, '#229169')};
       }
     }
+  }
 
-    @media ${mediaQueries.mobile} {
+  table {
+    tbody {
+      tr:hover {
+        cursor: pointer;
+      }
+    }
+  }
+
+  @media ${mediaQueries.mobileSmall} {
+    header {
       margin-bottom: 10px;
       h1 {
         font-size: 20px;
@@ -39,10 +49,10 @@ export const Container = styled.div`
       }
 
       button {
-        max-width: 200px;
+        max-width: 130px !important;
         background: #229169;
         color: #fff;
-        font-size: 14px;
+        font-size: 12px;
 
         &:hover {
           background: ${darken(0.1, '#229169')};
@@ -51,10 +61,24 @@ export const Container = styled.div`
     }
   }
 
-  table {
-    tbody {
-      tr:hover {
-        cursor: pointer;
+  @media ${mediaQueries.mobile} {
+    header {
+      margin-bottom: 10px;
+      h1 {
+        font-size: 20px;
+        margin-bottom: 0px;
+      }
+
+      button {
+        max-width: 150px;
+        background: #229169;
+        color: #fff;
+        font-size: 14px;
+        padding: 10px;
+
+        &:hover {
+          background: ${darken(0.1, '#229169')};
+        }
       }
     }
   }

@@ -2,8 +2,8 @@
   "name": "Ekki Easy Transfer",
   "short_name": "Ekki App",
   "display": "standalone",
-  "start_url": "./index.html",
-  "orientation": "landscape",
+  "start_url": "./",
+  "orientation": "portrait",
   "background_color": "#b83e3c",
   "theme_color": "#503026",
   "icons": [

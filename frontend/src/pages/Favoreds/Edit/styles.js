@@ -173,7 +173,71 @@ export const Container = styled.div`
         input {
           height: 100%;
           margin: 0px;
-          min-width: 280px;
+          min-width: 200px;
+        }
+      }
+
+      div.buttons {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 15px;
+        button {
+          height: 46px;
+          white-space: nowrap;
+          font-size: 14px;
+        }
+
+        button.btn-back {
+          max-width: 186px;
+          background: #777;
+          color: #fff;
+
+          &:hover {
+            background: ${darken(0.1, '#777')};
+          }
+        }
+
+        div {
+          button.btn-confirm {
+            margin: 0;
+          }
+        }
+      }
+    }
+  }
+
+  @media ${mediaQueries.mobileSmall} {
+    h1 {
+      font-size: 20px;
+    }
+
+    span.account {
+      padding: 15px !important;
+    }
+
+    form {
+      div.line1,
+      .line2 {
+        display: flex;
+        flex-direction: column-reverse !important;
+        margin-bottom: 0px;
+      }
+
+      span.input-group {
+        font-size: 15px;
+        background: rgba(255, 255, 255, 0.2);
+        margin: 15px auto !important;
+
+        label {
+          padding: 0px;
+          min-width: 100px;
+          padding: 17px 0;
+        }
+
+        input {
+          height: 100%;
+          margin: 0px;
+          min-width: 200px;
         }
       }
 

@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import * as Yup from 'yup';
-import { MdArrowBack, MdDone } from 'react-icons/md';
+import { MdDone } from 'react-icons/md';
+import { FaSpinner } from 'react-icons/fa';
 import { Form, Input, Select } from '@rocketseat/unform';
 import { toast } from 'react-toastify';
 import { updateBalance } from '~/store/modules/user/actions';
@@ -13,6 +14,7 @@ import api from '~/services/api';
 import { formatPrice } from '~/utils/format';
 
 export default function Transferings({ history }) {
+  const [loading, setLoading] = useState(false);
   const [favoreds, setFavoreds] = useState([]);
   const [options, setOptions] = useState([]);
   const [selectedFavored, setSelectedFavored] = useState({});
@@ -53,6 +55,7 @@ export default function Transferings({ history }) {
   }
 
   async function handleSubmit(data) {
+    setLoading(true);
     try {
       const response = await api.post('transactions', {
         user_id_destiny: data.id,
@@ -72,6 +75,7 @@ export default function Transferings({ history }) {
     } catch (err) {
       toast.error(`Ops, aconteceu algo: ${err.response.data.error}`);
     }
+    setLoading(false);
   }
 
   return (
@@ -120,8 +124,14 @@ export default function Transferings({ history }) {
           </span>
 
           <button type="submit" className="btn-confirm">
-            <MdDone />
-            Transferir agora
+            {loading ? (
+              <FaSpinner color="#fff" size={18} />
+            ) : (
+              <>
+                <MdDone />
+                Transferir agora
+              </>
+            )}
           </button>
         </div>
       </Form>

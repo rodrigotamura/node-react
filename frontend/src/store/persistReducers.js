@@ -6,7 +6,7 @@ export default reducers => {
     {
       key: 'ekki',
       storage,
-      whitelist: ['auth', 'user'],
+      whitelist: ['auth', 'user', 'contrast'],
     },
     reducers
   );

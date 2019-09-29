@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { mediaQueries } from '~/styles/mediaQueries';
 
 export const Container = styled.div`
   background: #513026;
@@ -10,13 +9,17 @@ export const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @media (min-width: 100px) and (max-width: 695px) {
+    min-width: 375px !important;
+  }
 `;
 
 export const Content = styled.div`
   width: 100%;
   max-width: 1440px;
 
-  @media ${mediaQueries.mobile} {
+  @media (min-width: 100px) and (max-width: 695px) {
     max-width: none;
   }
 
@@ -92,7 +95,7 @@ export const Content = styled.div`
       }
     }
 
-    @media ${mediaQueries.mobile} {
+    @media (min-width: 100px) and (max-width: 695px) {
       justify-content: center;
 
       img {

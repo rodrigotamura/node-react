@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { darken } from 'polished';
+import { mediaQueries } from '~/styles/mediaQueries';
 
 export const Container = styled.div`
   width: 408px;
@@ -32,5 +33,13 @@ export const Container = styled.div`
         cursor: pointer;
       }
     }
+  }
+
+  @media ${mediaQueries.mobile} {
+    width: 380px;
+  }
+
+  @media ${mediaQueries.mobileSmall} {
+    max-width: 355px;
   }
 `;

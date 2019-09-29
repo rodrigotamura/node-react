@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import { toast, ToastContainer } from 'react-toastify';
 import { PersistGate } from 'redux-persist/integration/react';
 import history from '~/services/history';
+
 import GlobalStyle from './styles/global';
 
 import './config/ReactotronConfig';

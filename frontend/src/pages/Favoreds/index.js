@@ -1,18 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import { MdPeople } from 'react-icons/md';
 import PropTypes from 'prop-types';
+import Loading from '~/components/Loading';
 
 import { Container } from './styles';
 import api from '~/services/api';
 
 export default function Favoreds({ history }) {
+  const [loading, setLoading] = useState(false);
   const [favoreds, setFavoreds] = useState([]);
 
   useEffect(() => {
     async function loadFavoreds() {
+      setLoading(true);
       const response = await api.get('favoreds');
 
       setFavoreds(response.data);
+      setLoading(false);
     }
 
     loadFavoreds();
@@ -30,34 +34,40 @@ export default function Favoreds({ history }) {
         </button>
       </header>
 
-      {favoreds.length > 0 ? (
-        <table>
-          <thead>
-            <tr>
-              <th>Nome</th>
-              <th>Número da conta</th>
-              <th>CPF</th>
-              <th>Celular</th>
-            </tr>
-          </thead>
-          <tbody>
-            {favoreds.map(favored => (
-              <tr
-                onClick={() => {
-                  history.push(`/favoreds/${favored.id}`);
-                }}
-                key={favored.id}
-              >
-                <td>{favored.name}</td>
-                <td>{favored.account_number}</td>
-                <td>{favored.cpf}</td>
-                <td>{favored.mobile}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+      {loading ? (
+        <Loading />
       ) : (
-        <span>Por enquanto você não possui nenhum favorecido.</span>
+        <>
+          {favoreds.length > 0 ? (
+            <table>
+              <thead>
+                <tr>
+                  <th>Nome</th>
+                  <th>Número da conta</th>
+                  <th>CPF</th>
+                  <th>Celular</th>
+                </tr>
+              </thead>
+              <tbody>
+                {favoreds.map(favored => (
+                  <tr
+                    onClick={() => {
+                      history.push(`/favoreds/${favored.id}`);
+                    }}
+                    key={favored.id}
+                  >
+                    <td>{favored.name}</td>
+                    <td>{favored.account_number}</td>
+                    <td>{favored.cpf}</td>
+                    <td>{favored.mobile}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          ) : (
+            <span>Por enquanto você não possui nenhum favorecido.</span>
+          )}
+        </>
       )}
     </Container>
   );

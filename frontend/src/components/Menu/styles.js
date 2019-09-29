@@ -15,7 +15,7 @@ export const Container = styled.div`
     padding: 5px;
   }
 
-  @media ${mediaQueries.mobile} {
+  @media (min-width: 100px) and (max-width: 695px) {
     display: none;
   }
 `;
