@@ -51,6 +51,13 @@ class FavoredsController {
       defaults: { name, mobile, account_number },
     });
 
+    // verifying if passed CPF is not from the requester
+    if (favored.id === req.userId) {
+      return res
+        .status(400)
+        .json({ error: 'Você utilizou o seu próprio CPF.' });
+    }
+
     // making this user as favored
     await Favored.findOrCreate({
       where: { user_id: req.userId, user_id_favored: favored.id },
