@@ -29,6 +29,7 @@
   "scripts": {
     "start": "PORT=8000 react-app-rewired start",
     "build": "react-app-rewired build",
+    "deploy": "scp -r ./build/* deploy@167.71.177.44:/var/www/ekki/html",
     "test": "react-app-rewired test",
     "eject": "react-scripts eject"
   },

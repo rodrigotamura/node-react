@@ -10,7 +10,7 @@ Bem vindo(a) ao aplicativo **Ekki - Easy Transfer**, uma MVP que veio pra facili
 
 Além de um aperfeiçoamento pessoal no uso das tecnologias implementadas, este projeto foi idealizado pela **4all** para um processo de seleção ao cargo de desenvolvedor _fullstack_ de Node.js e ReactJS.
 
-Se você está curioso sobre como ficou a aplicação, <a href="http://167.71.177.44" target="_blank">clique aqui</a> para acessá-lo. **Mas não esqueça de ler o restante deste README** para saber como foi o processo de desenvolvimento e todas as _techs_ utilizadas 😊!
+Se você está curioso sobre como ficou a aplicação, <a href="http://167.71.177.44" target="_blank">clique aqui</a> para acessá-lo (também te convido para acessar pelo seu aparelho celular para testar a responsividade 📲). **Mas não esqueça de ler o restante deste README** para saber como foi o processo de desenvolvimento e todas as _techs_ utilizadas 😊!
 
 ## Relembrando as principais regras de negócio
 

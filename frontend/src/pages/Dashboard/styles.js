@@ -18,5 +18,35 @@ export const Container = styled.div`
       font-size: 20px;
       margin-bottom: 15px;
     }
+
+    table {
+      th, td {
+        font-size: 11px;
+        padding: 5px !important;
+      }
+    }
   }
+
+  @media ${mediaQueries.mobileSmall} {
+    h1 {
+      font-size: 20px;
+      margin-bottom: 15px;
+    }
+
+    header {
+      margin-bottom: 10px;
+      h1 {
+        font-size: 20px;
+        margin-bottom: 0px;
+      }
+    }
+
+    table {
+      th, td {
+        font-size: 11px;
+        padding: 5px !important;
+      }
+    }
+  }
+
 `;
