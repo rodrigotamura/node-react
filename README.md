@@ -12,6 +12,12 @@ Além de um aperfeiçoamento pessoal no uso das tecnologias implementadas, este 
 
 Se você está curioso sobre como ficou a aplicação, <a href="http://167.71.177.44" target="_blank">clique aqui</a> para acessá-lo. **Mas não esqueça de ler o restante deste README** para saber como foi o processo de desenvolvimento e todas as _techs_ utilizadas 😊!
 
+## Relembrando as principais regras de negócio
+
+- Usuário começa com R\$ 1.000,00 de saldo (um 🎁 do dono do banco);
+- Usuário não poderá transferir mais do que possui no saldo para outrem;
+- Ao usuário transferir mais de uma vez para o mesmo favorecido em menos de 2 minutos, considerar o último.
+
 ## Processo de desenvolvimento
 
 Gostaria de expor, numa forma superficial para não tomar muito tempo, todo o processo de desenvolvimento desta aplicação.
