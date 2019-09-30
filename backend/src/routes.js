@@ -10,7 +10,7 @@ import TransactionsController from './app/controllers/TransactionsController';
 
 const routes = new Router();
 routes.get('/', function(req, res) {
-  return res.json({ msg: 'ok' });
+  return res.json({ msg: 'ok build' });
 });
 
 routes.use(initialMiddleware);
