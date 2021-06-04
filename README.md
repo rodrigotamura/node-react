@@ -86,7 +86,3 @@ Esta semana eu ouvi uma frase:
 > Quando você ama o seu trabalho, este trabalho acaba tornando-se uma diversão em desempenhá-lo. (Autor desconhecido)
 
 Obviamente esta "DIVERSÃO" é encarada para mim como algo prazeroso, mas com ciência das responsabilidades prezando a qualidade, pois entendo que qualquer projeto, independente da proporção, possui seus requisitos mínimos para gerar grandes valores a quem se destina.
-
-Saliento como salientei ao sr. Linhares: "Eu quero fazer! Eu quero aprender!", que foram palavras espontâneas, não meramente lançadas no ar. Ciente do meu nível de senioridade que não são tão elevadas (desejo sempre melhorar) e como uma "esponja" para aprender com quem sabe, me atrevo a DESEJAR fazer parte dos desafios da **família 4all**.
-
-Agradeço a oportunidade 😉
